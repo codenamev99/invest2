@@ -1,0 +1,1 @@
+([('main', '/Users/v/Desktop/(desktop)/Invest copy/dist/main', 'EXECUTABLE')],)
