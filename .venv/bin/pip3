@@ -1,4 +1,6 @@
-#!/Users/v/Desktop/(desktop)/Invest/.venv/bin/python
+#!/bin/sh
+'''exec' "/Users/v/Desktop/Invest copy/.venv/bin/python3.13" "$0" "$@"
+' '''
 # -*- coding: utf-8 -*-
 import re
 import sys

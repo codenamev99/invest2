@@ -1,0 +1,30 @@
+name: build-exe
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"  # adjust if you use a different version
+      - name: Install dependencies
+        shell: powershell
+        run: |
+          python -m pip install --upgrade pip
+          if (Test-Path requirements.txt) {
+            pip install -r requirements.txt
+          } else {
+            pip install requests pandas numpy yfinance tqdm pyinstaller
+          }
+      - name: Build exe
+        run: pyinstaller --onefile main.py --name main
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: main-exe
+          path: dist/main.exe
+
